@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body{margin:0;overflow:hidden;background-color:#000;font-family:'Montserrat',sans-serif;user-select:none}#background-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}#dark-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%);z-index:1;pointer-events:none}#canvas-container{width:100vw;height:100vh;position:absolute;top:0;left:0;z-index:2;transition:opacity .3s}#ui-layer{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;pointer-events:none;display:flex;flex-direction:column;align-items:center;padding-top:40px}#main-title{font-family:'Great Vibes',cursive;font-size:65px;color:#b00a2be6;margin:0;text-shadow:0 0 5px rgba(0,0,0,0.5);animation:floatTitle 3s ease-in-out infinite}#mode-indicator{font-size:10px;color:rgba(255,255,255,0.9);letter-spacing:4px;text-transform:uppercase;margin-top:5px;text-shadow:0 0 2px #000}#lyrics-container{position:absolute;bottom:140px;width:100%;text-align:center;z-index:20;pointer-events:none}#lyrics-text{font-family:'Times New Roman',Times,serif;font-size:22px;font-style:italic;font-weight:500;color:#fff;text-shadow:0 0 4px rgba(0,0,0,0.9);padding:0 20px}#webcam-wrapper{position:absolute;bottom:30px;left:30px;width:150px;height:112px;z-index:50;background:#000;border:1px solid rgba(255,255,255,0.3);border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.5);overflow:hidden}#webcam-canvas{width:100%;height:100%;transform:scaleX(-1);border-radius:12px}#cam-overlay{position:absolute;top:8px;right:8px;display:flex;align-items:center;gap:4px;z-index:25;background:rgba(0,0,0,0.5);padding:2px 6px;border-radius:10px}.rec-dot{width:5px;height:5px;background-color:#f36;border-radius:50%;animation:blink 1.5s infinite}.rec-text{color:#fff;font-size:8px;font-weight:600;letter-spacing:1px}#cam-stats{position:absolute;bottom:0;left:0;width:100%;text-align:center;font-size:8px;font-weight:500;color:#ffb7c5;z-index:26;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);padding:4px 0}#start-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .5s}.start-btn{border:1px solid #ffb7c5;padding:15px 30px;color:#ffb7c5;font-size:14px;letter-spacing:2px;text-transform:uppercase;border-radius:30px;background:rgba(0,0,0,0.5);margin-bottom:10px}.start-note{color:#ccc;font-size:11px}
+        body{margin:0;overflow:hidden;background-color:#000;font-family:'Montserrat',sans-serif;user-select:none}#background-image{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}#dark-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%);z-index:1;pointer-events:none}#canvas-container{width:100vw;height:100vh;position:absolute;top:0;left:0;z-index:2;transition:opacity .3s}#ui-layer{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;pointer-events:none;display:flex;flex-direction:column;align-items:center;padding-top:40px}#main-title{font-family:'Great Vibes',cursive;font-size:65px;color:#e21d45e6;margin:0;text-shadow:0 0 5px rgba(0,0,0,0.5);animation:floatTitle 3s ease-in-out infinite}#mode-indicator{font-size:10px;color:rgba(255,255,255,0.9);letter-spacing:4px;text-transform:uppercase;margin-top:5px;text-shadow:0 0 2px #000}#lyrics-container{position:absolute;bottom:140px;width:100%;text-align:center;z-index:20;pointer-events:none}#lyrics-text{font-family:'Times New Roman',Times,serif;font-size:22px;font-style:italic;font-weight:500;color:#fff;text-shadow:0 0 4px rgba(0,0,0,0.9);padding:0 20px}#webcam-wrapper{position:absolute;bottom:30px;left:30px;width:150px;height:112px;z-index:50;background:#000;border:1px solid rgba(255,255,255,0.3);border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.5);overflow:hidden}#webcam-canvas{width:100%;height:100%;transform:scaleX(-1);border-radius:12px}#cam-overlay{position:absolute;top:8px;right:8px;display:flex;align-items:center;gap:4px;z-index:25;background:rgba(0,0,0,0.5);padding:2px 6px;border-radius:10px}.rec-dot{width:5px;height:5px;background-color:#f36;border-radius:50%;animation:blink 1.5s infinite}.rec-text{color:#fff;font-size:8px;font-weight:600;letter-spacing:1px}#cam-stats{position:absolute;bottom:0;left:0;width:100%;text-align:center;font-size:8px;font-weight:500;color:#ffb7c5;z-index:26;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);padding:4px 0}#start-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .5s}.start-btn{border:1px solid #e21d45e6;padding:15px 30px;color:#e21d45e6;font-size:14px;letter-spacing:2px;text-transform:uppercase;border-radius:30px;background:rgba(0,0,0,0.5);margin-bottom:10px}.start-note{color:#ccc;font-size:11px}
        
         @keyframes floatTitle{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}@keyframes blink{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}@keyframes driftMark{from{transform:translate(0,0)}to{transform:translate(-10px,-5px)}}
     </style>
@@ -39,7 +39,7 @@
         const SCENE_CONFIG = { scaleFar: 10.00, posFar: { x: 0.0, y: -0.6 }, camZFar: 7.7, scaleNear: 10.00, posNear: { x: 0.0, y: -0.7 }, camZNear: 2.5, zoomSpeed: 0.1, rotateSpeed: 0.08 };
         const LAYERS = [
             { id: 'inner_snow', shape: 'Snowflake', count: 400, opacity: 0.9, color: '#ffffff', speed: 0.0005, size: 0.06, radius: 0.48, startY: 1.1, endY: -0.3, drift: 0.01, twinkle: false, rotateWithJar: true },
-            { id: 'snow_main', shape: 'Snowflake', count: 150, opacity: 0.9, color: '#e0ffff', speed: 0.0010, size: 0.18, radius: 5.0, startY: 7.0, endY: -6.0, drift: 0.05, twinkle: true, rotateWithJar: true },
+            { id: 'snow_main', shape: 'Snowflake', count: 150, opacity: 0.9, color: '#e0ffff', speed: 0.0010, size: 0.3, radius: 5.0, startY: 7.0, endY: -6.0, drift: 0.05, twinkle: true, rotateWithJar: true },
             { id: 'gold_dust', shape: 'Circle', count: 120, opacity: 0.8, color: '#ffcc00', speed: 0.0006, size: 0.03, radius: 4.5, startY: 6.0, endY: -4.0, drift: 0.08, twinkle: true, rotateWithJar: true }
         ];
 
@@ -95,51 +95,70 @@
             animate();
         }
 
-        function loadPolaroidTextures() {
+function loadPolaroidTextures() {
             const imgLoader = new THREE.ImageLoader();
             imgLoader.crossOrigin = 'anonymous'; 
             const cacheBuster = Date.now();
+
             for (let i = 1; i <= TOTAL_PHOTOS; i++) {
-                const canvas = document.createElement('canvas'); canvas.width = 256; canvas.height = 300; const ctx = canvas.getContext('2d');
-                ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 256, 300); ctx.fillStyle = '#eee'; ctx.fillRect(15, 15, 226, 226);
-                ctx.fillStyle = '#333'; ctx.font = '16px Arial'; ctx.textAlign = 'center'; ctx.fillText('Loading...', 128, 130);
-                const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; polaroidTextures.push(texture);
+                const canvas = document.createElement('canvas'); 
+                canvas.width = 256; 
+                canvas.height = 300; 
+                const ctx = canvas.getContext('2d');
+                
+                // Vẽ khung trắng nền ban đầu
+                ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 256, 300);
+                ctx.fillStyle = '#eee'; ctx.fillRect(15, 15, 226, 226);
+                
+                const texture = new THREE.CanvasTexture(canvas); 
+                texture.colorSpace = THREE.SRGBColorSpace; 
+                polaroidTextures.push(texture);
+                
                 const path = `./images/${i}.png?v=${cacheBuster}`;
-               imgLoader.load(path, (image) => {
-    ctx.fillStyle = '#fdfdfd'; 
-    ctx.fillRect(0, 0, 256, 300); // Vẽ nền trắng cho tấm ảnh Polaroid
+                imgLoader.load(path, (image) => {
+                    // Vẽ lại nền trắng sạch sẽ
+                    ctx.fillStyle = '#fdfdfd'; 
+                    ctx.fillRect(0, 0, 256, 300); 
 
-    // Thuật toán căn giữa và cắt ảnh (Crop) để không bị dãn
-    const targetW = 226;
-    const targetH = 226;
-    const targetX = 15;
-    const targetY = 15;
+                    // --- LOGIC CHỐNG KÉO DÃN (CENTER CROP) ---
+                    const targetSize = 226; // Kích thước khung vuông muốn vẽ
+                    const targetX = 15;
+                    const targetY = 15;
+                    
+                    let srcX, srcY, srcW, srcH;
+                    const imgRatio = image.width / image.height;
 
-    let imgW = image.width;
-    let imgH = image.height;
-    let ratio = Math.max(targetW / imgW, targetH / imgH);
-    let newW = imgW * ratio;
-    let newH = imgH * ratio;
-    let offsetX = (targetW - newW) / 2;
-    let offsetY = (targetH - newH) / 2;
+                    if (imgRatio > 1) { 
+                        // Ảnh ngang: Lấy phần giữa theo chiều rộng
+                        srcH = image.height;
+                        srcW = image.height;
+                        srcX = (image.width - srcW) / 2;
+                        srcY = 0;
+                    } else { 
+                        // Ảnh đứng: Lấy phần giữa theo chiều cao
+                        srcW = image.width;
+                        srcH = image.width;
+                        srcX = 0;
+                        srcY = (image.height - srcH) / 2;
+                    }
 
-    // Vẽ ảnh đã được xử lý tỷ lệ
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(targetX, targetY, targetW, targetH);
-    ctx.clip(); // Giới hạn vùng vẽ trong khung hình vuông
-    ctx.drawImage(image, targetX + offsetX, targetY + offsetY, newW, newH);
-    ctx.restore();
+                    // Vẽ ảnh đã được cắt tỉ lệ 1:1 vào khung
+                    ctx.drawImage(image, srcX, srcY, srcW, srcH, targetX, targetY, targetSize, targetSize);
 
-    ctx.fillStyle = '#333'; 
-    ctx.font = '22px Montserrat'; 
-    ctx.textAlign = 'center'; 
-    ctx.fillText(`Moment ${i}`, 128, 275);
-    texture.needsUpdate = true;
-}, undefined, () => {
-                    ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 256, 300); ctx.fillStyle = '#ffcccc'; ctx.fillRect(15, 15, 226, 226);
-                    ctx.fillStyle = '#cc0000'; ctx.font = 'bold 20px Arial'; ctx.textAlign = 'center'; ctx.fillText('NO IMAGE', 128, 120);
-                    ctx.font = '14px Arial'; ctx.fillText(`${i}.png`, 128, 150); texture.needsUpdate = true;
+                    // Viết chữ "Moment X"
+                    ctx.fillStyle = '#333'; 
+                    ctx.font = '22px Montserrat'; 
+                    ctx.textAlign = 'center'; 
+                    ctx.fillText(`Moment ${i}`, 128, 275);
+                    
+                    texture.needsUpdate = true;
+                }, undefined, () => {
+                    // Xử lý khi ảnh lỗi không tải được
+                    ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 256, 300);
+                    ctx.fillStyle = '#ffcccc'; ctx.fillRect(15, 15, 226, 226);
+                    ctx.fillStyle = '#cc0000'; ctx.font = 'bold 20px Arial'; ctx.textAlign = 'center'; 
+                    ctx.fillText('LỖI ẢNH', 128, 120); 
+                    texture.needsUpdate = true;
                 });
             }
         }
