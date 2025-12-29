@@ -105,11 +105,38 @@
                 ctx.fillStyle = '#333'; ctx.font = '16px Arial'; ctx.textAlign = 'center'; ctx.fillText('Loading...', 128, 130);
                 const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; polaroidTextures.push(texture);
                 const path = `./images/${i}.png?v=${cacheBuster}`;
-                imgLoader.load(path, (image) => {
-                    ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 256, 300); ctx.drawImage(image, 15, 15, 226, 226);
-                    ctx.fillStyle = '#333'; ctx.font = '22px Montserrat'; ctx.textAlign = 'center'; ctx.fillText(`Moment ${i}`, 128, 275);
-                    texture.needsUpdate = true;
-                }, undefined, () => {
+               imgLoader.load(path, (image) => {
+    ctx.fillStyle = '#fdfdfd'; 
+    ctx.fillRect(0, 0, 256, 300); // Vẽ nền trắng cho tấm ảnh Polaroid
+
+    // Thuật toán căn giữa và cắt ảnh (Crop) để không bị dãn
+    const targetW = 226;
+    const targetH = 226;
+    const targetX = 15;
+    const targetY = 15;
+
+    let imgW = image.width;
+    let imgH = image.height;
+    let ratio = Math.max(targetW / imgW, targetH / imgH);
+    let newW = imgW * ratio;
+    let newH = imgH * ratio;
+    let offsetX = (targetW - newW) / 2;
+    let offsetY = (targetH - newH) / 2;
+
+    // Vẽ ảnh đã được xử lý tỷ lệ
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(targetX, targetY, targetW, targetH);
+    ctx.clip(); // Giới hạn vùng vẽ trong khung hình vuông
+    ctx.drawImage(image, targetX + offsetX, targetY + offsetY, newW, newH);
+    ctx.restore();
+
+    ctx.fillStyle = '#333'; 
+    ctx.font = '22px Montserrat'; 
+    ctx.textAlign = 'center'; 
+    ctx.fillText(`Moment ${i}`, 128, 275);
+    texture.needsUpdate = true;
+}, undefined, () => {
                     ctx.fillStyle = '#fdfdfd'; ctx.fillRect(0, 0, 256, 300); ctx.fillStyle = '#ffcccc'; ctx.fillRect(15, 15, 226, 226);
                     ctx.fillStyle = '#cc0000'; ctx.font = 'bold 20px Arial'; ctx.textAlign = 'center'; ctx.fillText('NO IMAGE', 128, 120);
                     ctx.font = '14px Arial'; ctx.fillText(`${i}.png`, 128, 150); texture.needsUpdate = true;
